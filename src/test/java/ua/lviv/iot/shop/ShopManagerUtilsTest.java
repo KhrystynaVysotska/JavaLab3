@@ -35,4 +35,13 @@ class ShopManagerUtilsTest extends BaseShopManagerTest {
 		assertEquals("H&M", sweaters.get(2).getBrandName());
 		assertEquals("TopHat", sweaters.get(3).getBrandName());
 	}
+	
+	@Test
+	public void testSortGoodsByItemId() {
+		ShopManagerUtils.sortGoodsByItemId(sweaters, SortType.DESCENDING);
+		assertEquals(3654, sweaters.get(0).getItemId());
+		assertEquals(3434, sweaters.get(1).getItemId());
+		assertEquals(1543, sweaters.get(2).getItemId());
+		assertEquals(1234, sweaters.get(3).getItemId());
+	}
 }

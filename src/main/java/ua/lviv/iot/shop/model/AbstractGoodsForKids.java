@@ -1,6 +1,6 @@
 package ua.lviv.iot.shop.model;
 
-public abstract class AbstractGoodsForKids implements Comparable<AbstractGoodsForKids> {
+public abstract class AbstractGoodsForKids {
 	private Season season;
 	private String countryOfManufacture;
 	private String brandName;
@@ -22,11 +22,6 @@ public abstract class AbstractGoodsForKids implements Comparable<AbstractGoodsFo
 		this.setColor(color);
 		this.size = size;
 		this.setItemId(itemId);
-	}
-
-	@Override
-	public int compareTo(AbstractGoodsForKids anotherItem) {
-		return this.getBrandName().compareTo(anotherItem.getBrandName());
 	}
 
 	public double getPriceInUAH() {
