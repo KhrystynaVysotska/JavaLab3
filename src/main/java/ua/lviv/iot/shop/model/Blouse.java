@@ -1,32 +1,31 @@
 package ua.lviv.iot.shop.model;
 
 public class Blouse extends AbstractClothes {
-	private String necklineType;
-    private double sleeveLengthInCentimetres;
-    
-	public Blouse(Season season, String countryOfManufacture, String brandName, double priceInUAH,
-			Gender genderCategory, String material, String color, int size, int itemId, int ageGroupInYears,
-			int heightInCentimetres, String clothesStyle, String printType, String necklineType,
-			double sleeveLengthInCentimetres) {
-		super(season, countryOfManufacture, brandName, priceInUAH, genderCategory, material, color, size, itemId,
-				ageGroupInYears, heightInCentimetres, clothesStyle, printType);
-		this.necklineType = necklineType;
-		this.sleeveLengthInCentimetres = sleeveLengthInCentimetres;
-	}
+  private String necklineType;
+  private double sleeveLengthInCentimetres;
 
-	public String getNecklineType() {
-		return necklineType;
-	}
+  public Blouse(Season season, String countryOfManufacture, String brandName, double priceInUah, Gender genderCategory,
+      String material, String color, int size, int itemId, int ageGroupInYears, int heightInCentimetres,
+      String clothesStyle, String printType, String necklineType, double sleeveLengthInCentimetres) {
+    super(season, countryOfManufacture, brandName, priceInUah, genderCategory, material, color, size, itemId,
+        ageGroupInYears, heightInCentimetres, clothesStyle, printType);
+    this.necklineType = necklineType;
+    this.sleeveLengthInCentimetres = sleeveLengthInCentimetres;
+  }
 
-	public void setNecklineType(String necklineType) {
-		this.necklineType = necklineType;
-	}
+  public String getNecklineType() {
+    return necklineType;
+  }
 
-	public double getSleeveLengthInCentimetres() {
-		return sleeveLengthInCentimetres;
-	}
+  public void setNecklineType(String necklineType) {
+    this.necklineType = necklineType;
+  }
 
-	public void setSleeveLengthInCentimetres(double sleeveLengthInCentimetres) {
-		this.sleeveLengthInCentimetres = sleeveLengthInCentimetres;
-	}
+  public double getSleeveLengthInCentimetres() {
+    return sleeveLengthInCentimetres;
+  }
+
+  public void setSleeveLengthInCentimetres(double sleeveLengthInCentimetres) {
+    this.sleeveLengthInCentimetres = sleeveLengthInCentimetres;
+  }
 }

@@ -4,18 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import ua.lviv.iot.shop.ShopManager.ShopManagerUtils;
 import ua.lviv.iot.shop.model.SortType;
+import ua.lviv.iot.shop.shopmanager.ShopManagerUtils;
 
 class ShopManagerUtilsTest extends BaseShopManagerTest {
 
 	@Test
 	public void testSortGoodsByPrice() {
 		ShopManagerUtils.sortGoodsByPrice(sweaters, SortType.ASCENDING);
-		assertEquals(340, sweaters.get(0).getPriceInUAH());
-		assertEquals(450, sweaters.get(1).getPriceInUAH());
-		assertEquals(490, sweaters.get(2).getPriceInUAH());
-		assertEquals(560, sweaters.get(3).getPriceInUAH());
+		assertEquals(340, sweaters.get(0).getPriceInUah());
+		assertEquals(450, sweaters.get(1).getPriceInUah());
+		assertEquals(490, sweaters.get(2).getPriceInUah());
+		assertEquals(560, sweaters.get(3).getPriceInUah());
 	}
 	
 	@Test
