@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ua.lviv.iot.shop.ShopManager.ShopManager;
 import ua.lviv.iot.shop.model.AbstractGoodsForKids;
 import ua.lviv.iot.shop.model.Gender;
 import ua.lviv.iot.shop.model.Season;
+import ua.lviv.iot.shop.shopmanager.ShopManager;
 
 class ShopManagerTest extends BaseShopManagerTest{
 
