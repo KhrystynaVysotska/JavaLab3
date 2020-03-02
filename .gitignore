@@ -14,6 +14,9 @@ target/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# CSV files
+*.csv
+
 # Package Files #
 *.jar
 *.war

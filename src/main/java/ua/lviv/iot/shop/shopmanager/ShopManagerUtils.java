@@ -9,15 +9,14 @@ import ua.lviv.iot.shop.model.SortType;
 public class ShopManagerUtils {
 
   private static final GoodsSorterByPrice GOODS_BY_PRICE_SORTER = new GoodsSorterByPrice();
+  public static final GoodsSorterBySize GOODS_BY_SIZE_SORTER = new ShopManagerUtils().new GoodsSorterBySize();
 
   public static void sortGoodsByPrice(List<AbstractGoodsForKids> goods, SortType sortType) {
     goods.sort(sortType == SortType.ASCENDING ? GOODS_BY_PRICE_SORTER : GOODS_BY_PRICE_SORTER.reversed());
   }
 
   public static void sortGoodsBySize(List<AbstractGoodsForKids> goods, SortType sortType) {
-    ShopManagerUtils shopManager = new ShopManagerUtils();
-    GoodsSorterBySize sorterBySize = shopManager.new GoodsSorterBySize();
-    goods.sort(sortType == SortType.ASCENDING ? sorterBySize : sorterBySize.reversed());
+    goods.sort(sortType == SortType.ASCENDING ? GOODS_BY_SIZE_SORTER : GOODS_BY_SIZE_SORTER.reversed());
   }
 
   public static void sortGoodsByBrandName(List<AbstractGoodsForKids> goods, SortType sortType) {
