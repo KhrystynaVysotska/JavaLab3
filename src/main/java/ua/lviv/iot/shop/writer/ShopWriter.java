@@ -13,7 +13,6 @@ public class ShopWriter {
     }
 
     public void writeToFile(List<AbstractGoodsForKids> goods) throws IOException {
-
         for (AbstractGoodsForKids good : goods) {
             csvWriter.write(good.getHeaders());
             csvWriter.write(good.toCSV());
