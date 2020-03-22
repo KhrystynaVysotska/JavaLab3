@@ -3,6 +3,11 @@ package ua.lviv.iot.shop.model;
 public class Sweater extends AbstractClothes {
     private String knittingType;
     private double neckHeightInCentimetres;
+    private Integer sweaterId;
+
+    public Sweater() {
+
+    }
 
     public Sweater(Season season, String countryOfManufacture, String brandName, double priceInUah,
             Gender genderCategory, String material, String color, int size, int itemId, int ageGroupInYears,
@@ -12,6 +17,14 @@ public class Sweater extends AbstractClothes {
                 ageGroupInYears, heightInCentimetres, clothesStyle, printType);
         this.knittingType = knittingType;
         this.neckHeightInCentimetres = neckHeightInCentimetres;
+    }
+
+    public Integer getSweaterId() {
+        return sweaterId;
+    }
+
+    public void setSweaterId(Integer sweaterId) {
+        this.sweaterId = sweaterId;
     }
 
     public String getKnittingType() {
