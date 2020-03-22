@@ -11,6 +11,10 @@ public abstract class AbstractGoodsForKids {
     private int size;
     private int itemId;
 
+    public AbstractGoodsForKids() {
+        
+    }
+    
     public AbstractGoodsForKids(Season season, String countryOfManufacture, String brandName, double priceInUah,
             Gender genderCategory, String material, String color, int size, int itemId) {
         this.season = season;
