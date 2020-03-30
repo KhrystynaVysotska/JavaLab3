@@ -1,5 +1,8 @@
 package ua.lviv.iot.shop.model;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class AbstractClothes extends AbstractGoodsForKids {
     private int ageGroupInYears;
     private int heightInCentimetres;
