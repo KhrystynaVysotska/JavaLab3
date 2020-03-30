@@ -6,6 +6,10 @@ public abstract class AbstractClothes extends AbstractGoodsForKids {
     private String clothesStyle;
     private String printType;
 
+    public AbstractClothes() {
+        
+    }
+    
     public AbstractClothes(Season season, String countryOfManufacture, String brandName, double priceInUah,
             Gender genderCategory, String material, String color, int size, int itemId, int ageGroupInYears,
             int heightInCentimetres, String clothesStyle, String printType) {
