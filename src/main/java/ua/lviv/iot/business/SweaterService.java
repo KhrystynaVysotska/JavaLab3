@@ -19,9 +19,9 @@ public class SweaterService {
     }
 
     public ResponseEntity<Sweater> getSweater(Integer sweaterId) {
-        if(sweaterRepository.existsById(sweaterId)) {
+        if (sweaterRepository.existsById(sweaterId)) {
             Sweater selectedSweater = sweaterRepository.findById(sweaterId).get();
-            return new ResponseEntity<Sweater>(selectedSweater,HttpStatus.OK);
+            return new ResponseEntity<Sweater>(selectedSweater, HttpStatus.OK);
         } else {
             return new ResponseEntity<Sweater>(HttpStatus.NOT_FOUND);
         }
