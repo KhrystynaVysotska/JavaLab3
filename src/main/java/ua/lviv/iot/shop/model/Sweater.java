@@ -1,8 +1,17 @@
 package ua.lviv.iot.shop.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Sweater extends AbstractClothes {
     private String knittingType;
     private double neckHeightInCentimetres;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer sweaterId;
 
     public Sweater() {
@@ -18,7 +27,7 @@ public class Sweater extends AbstractClothes {
         this.knittingType = knittingType;
         this.neckHeightInCentimetres = neckHeightInCentimetres;
     }
-
+    
     public Integer getSweaterId() {
         return sweaterId;
     }
