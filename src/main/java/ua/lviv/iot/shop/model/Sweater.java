@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,7 +26,10 @@ public class Sweater extends AbstractClothes {
     @JsonIgnoreProperties("sweaters")
     private Manufacturer manufacturer;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "sweaters")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Sweater_Shop", joinColumns = {
+            @JoinColumn(name = "sweater_id", nullable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "shop_id", nullable = true) })
     @JsonIgnoreProperties("sweaters")
     private Set<Shop> shops;
 
