@@ -6,8 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,10 +17,7 @@ public class Shop {
     private String adress;
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "Sweater_Shop", joinColumns = {
-            @JoinColumn(name = "shop_id", nullable = false) }, inverseJoinColumns = {
-                    @JoinColumn(name = "sweater_id", nullable = false) })
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "shops")
     @JsonIgnoreProperties("shops")
     private Set<Sweater> sweaters;
 
