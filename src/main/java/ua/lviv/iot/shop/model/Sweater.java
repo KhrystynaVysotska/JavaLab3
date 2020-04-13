@@ -29,7 +29,7 @@ public class Sweater extends AbstractClothes {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Sweater_Shop", joinColumns = {
             @JoinColumn(name = "sweater_id", nullable = false) }, inverseJoinColumns = {
-                    @JoinColumn(name = "shop_id", nullable = true) })
+                    @JoinColumn(name = "shop_id", nullable = false) })
     @JsonIgnoreProperties("sweaters")
     private Set<Shop> shops;
 
