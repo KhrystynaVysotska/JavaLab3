@@ -58,7 +58,7 @@ public class ManufacturerController {
     public ResponseEntity<Manufacturer> updateManufacturer(@RequestBody Manufacturer manufacturer,
             @PathVariable("id") Integer manufacturerId) {
         manufacturer.setId(manufacturerId);
-        Manufacturer updatedManufacturer = manufacturerService.update(manufacturerId, manufacturer);
+        Manufacturer updatedManufacturer = manufacturerService.update(manufacturerId, manufacturer, new Manufacturer());
         if(updatedManufacturer != null) {
             return new ResponseEntity<Manufacturer>(updatedManufacturer, HttpStatus.OK);
         } else {

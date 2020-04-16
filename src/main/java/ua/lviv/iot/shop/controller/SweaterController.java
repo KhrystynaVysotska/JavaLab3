@@ -46,7 +46,7 @@ public class SweaterController {
     public ResponseEntity<Sweater> modifySweater(final @PathVariable("id") Integer sweaterId,
             final @RequestBody Sweater sweater) {
         sweater.setSweaterId(sweaterId);
-        Sweater updatedSweater = sweaterService.update(sweaterId, sweater);
+        Sweater updatedSweater = sweaterService.update(sweaterId, sweater, new Sweater());
         if(updatedSweater!=null) {
             return new ResponseEntity<Sweater>(updatedSweater, HttpStatus.OK);
         } else {

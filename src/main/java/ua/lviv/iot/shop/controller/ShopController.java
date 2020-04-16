@@ -56,7 +56,7 @@ public class ShopController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Shop> updateShop(@PathVariable("id") Integer shopId, @RequestBody Shop shop) {
         shop.setId(shopId);
-        Shop updatedShop = shopService.update(shopId, shop);
+        Shop updatedShop = shopService.update(shopId, shop, new Shop());
         if(updatedShop != null) {
             return new ResponseEntity<Shop>(updatedShop, HttpStatus.OK);
         } else {
