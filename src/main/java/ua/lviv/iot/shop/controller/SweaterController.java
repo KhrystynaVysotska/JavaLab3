@@ -47,7 +47,7 @@ public class SweaterController {
             final @RequestBody Sweater sweater) {
         sweater.setSweaterId(sweaterId);
         Sweater updatedSweater = sweaterService.update(sweaterId, sweater, new Sweater());
-        if(updatedSweater!=null) {
+        if (updatedSweater != null) {
             return new ResponseEntity<Sweater>(updatedSweater, HttpStatus.OK);
         } else {
             return new ResponseEntity<Sweater>(HttpStatus.NOT_FOUND);
@@ -57,7 +57,7 @@ public class SweaterController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Sweater> deleteSweater(final @PathVariable("id") Integer sweaterId) {
         boolean result = sweaterService.deleteById(sweaterId);
-        if(result) {
+        if (result) {
             return ResponseEntity.status(HttpStatus.OK).build();
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
