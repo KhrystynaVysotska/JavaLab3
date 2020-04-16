@@ -2,6 +2,7 @@ package ua.lviv.iot.business;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class AbstractService<T> {
@@ -12,7 +13,7 @@ public abstract class AbstractService<T> {
      }
 
      public T getById(Integer id) {
-             return getJpaRepository().findById(id).get();
+             return getJpaRepository().findById(id).orElse(null);
      }
 
      public T saveToDatabase(T newObject) {
@@ -28,11 +29,11 @@ public abstract class AbstractService<T> {
          }
      }
 
-     public T update(Integer id, T object) {
+     public T update(Integer id, T newObject, T oldObject) {
          if (getJpaRepository().existsById(id)) {
-             return getJpaRepository().save(object);
-         } else {
-             return null;
-         }
+             BeanUtils.copyProperties(getJpaRepository().findById(id).get(), oldObject);
+             getJpaRepository().save(newObject);
+         } 
+         return oldObject;
      }
 }
