@@ -24,28 +24,43 @@ public class SweaterController {
 
     @GetMapping
     public List<Sweater> getAllSweaters() {
-        return sweaterService.getAllSweaters();
+        return sweaterService.findAll();
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Sweater> getSweater(final @PathVariable("id") Integer sweaterId) {
-        return sweaterService.getSweater(sweaterId);
+        Sweater foundedSweater = sweaterService.getById(sweaterId);
+        if (foundedSweater != null) {
+            return new ResponseEntity<Sweater>(foundedSweater, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Sweater>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping
     public Sweater createSweater(final @RequestBody Sweater newSweater) {
-        return sweaterService.createSweater(newSweater);
+        return sweaterService.saveToDatabase(newSweater);
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Sweater> modifySweater(final @PathVariable("id") Integer sweaterId,
             final @RequestBody Sweater sweater) {
-        return sweaterService.updateSweater(sweater, sweaterId);
+        sweater.setSweaterId(sweaterId);
+        Sweater updatedSweater = sweaterService.update(sweaterId, sweater, new Sweater());
+        if (updatedSweater != null) {
+            return new ResponseEntity<Sweater>(updatedSweater, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Sweater>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Sweater> deleteSweater(final @PathVariable("id") Integer sweaterId) {
-        HttpStatus status = sweaterService.deleteSweater(sweaterId);
-        return ResponseEntity.status(status).build();
+        boolean result = sweaterService.deleteById(sweaterId);
+        if (result) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

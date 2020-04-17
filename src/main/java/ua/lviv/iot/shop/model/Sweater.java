@@ -1,9 +1,16 @@
 package ua.lviv.iot.shop.model;
 
+import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Sweater extends AbstractClothes {
@@ -13,6 +20,18 @@ public class Sweater extends AbstractClothes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer sweaterId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "manufacturer_id")
+    @JsonIgnoreProperties("sweaters")
+    private Manufacturer manufacturer;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Sweater_Shop", joinColumns = {
+            @JoinColumn(name = "sweater_id", nullable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "shop_id", nullable = false) })
+    @JsonIgnoreProperties("sweaters")
+    private Set<Shop> shops;
 
     public Sweater() {
 
@@ -27,7 +46,7 @@ public class Sweater extends AbstractClothes {
         this.knittingType = knittingType;
         this.neckHeightInCentimetres = neckHeightInCentimetres;
     }
-    
+
     public Integer getSweaterId() {
         return sweaterId;
     }
@@ -52,11 +71,27 @@ public class Sweater extends AbstractClothes {
         this.neckHeightInCentimetres = neckHeightInCentimetres;
     }
 
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public String getHeaders() {
         return super.getHeaders() + "," + "knittingType, neckHeightInCentimetres \n";
     }
 
     public String toCSV() {
         return super.toCSV() + "," + knittingType + "," + neckHeightInCentimetres + "\n";
+    }
+
+    public Set<Shop> getShops() {
+        return shops;
+    }
+
+    public void setShops(Set<Shop> shops) {
+        this.shops = shops;
     }
 }
